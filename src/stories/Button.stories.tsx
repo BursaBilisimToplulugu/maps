@@ -7,6 +7,19 @@ const meta = {
   component: Button,
   parameters: {
     layout: 'centered',
+    backgrounds: {
+      default: 'white',
+      values: [
+        {
+          name: 'white',
+          value: '#FFFFFF',
+        },
+        {
+          name: 'black',
+          value: '#000000',
+        },
+      ],
+    },
   },
   tags: ['autodocs'],
   argTypes: {
@@ -51,6 +64,21 @@ export const Dark: Story = {
     variant: 'dark',
     size: 'medium',
     disabled: false,
+  },
+  parameters: {
+    backgrounds: {
+      default: 'black',
+      values: [
+        {
+          name: 'white',
+          value: '#FFFFFF',
+        },
+        {
+          name: 'black',
+          value: '#000000',
+        },
+      ],
+    },
   },
   render: ({ ...rest }) => <Button {...rest}>Dark</Button>,
 };
