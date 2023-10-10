@@ -1,0 +1,44 @@
+.button {
+  @apply inline-flex justify-center items-center gap-3;
+  @apply rounded-full text-base leading-none font-bold;
+  @apply transition duration-300 ease-in;
+
+  &:disabled {
+    @apply cursor-not-allowed opacity-50;
+  }
+
+  &.neutral {
+    @apply text-[#FCFCFD] bg-[#3B71FE];
+
+    &:hover,
+    &:disabled {
+      @apply bg-[#3772FF];
+    }
+  }
+
+  &.light {
+    @apply text-[#23262F] border-2 border-solid border-[#E6E8EC];
+
+    &:hover,
+    &:disabled {
+      @apply text-[#FCFCFD] border-0 border-none bg-[#23262F];
+    }
+  }
+
+  &.dark {
+    @apply text-[#FCFCFD] border-2 border-solid border-[#777E90];
+
+    &:hover,
+    &:disabled {
+      @apply text-[#23262F] border-0 border-none bg-[#FCFCFD];
+    }
+  }
+
+  &.small {
+    @apply h-10 py-3 px-4;
+  }
+
+  &.medium {
+    @apply h-12 py-4 px-6;
+  }
+}

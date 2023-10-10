@@ -1,11 +1,29 @@
-import Text from "./variants/Text";
+import classNames from 'classnames';
+import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
-interface Props {}
+import './styles.scss';
 
-const Button = (props: Props) => {
-  return <div className="bg-red-200">MyButton</div>;
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children: ReactNode;
+  variant?: 'neutral' | 'light' | 'dark';
+  size?: 'small' | 'medium';
+}
+
+const Button = ({
+  variant = 'neutral',
+  size = 'medium',
+  className,
+  children,
+  ...rest
+}: Props) => {
+  return (
+    <button
+      className={classNames('button', variant, size, className)}
+      {...rest}
+    >
+      {children}
+    </button>
+  );
 };
-
-Button.Text = Text;
 
 export default Button;
