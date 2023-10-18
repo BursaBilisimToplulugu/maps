@@ -1,5 +1,6 @@
 import Input from '@/app/common/components/Input';
 import { Meta, StoryObj } from '@storybook/react';
+import {} from 'react-icons';
 
 const meta = {
   title: 'Components/Input',

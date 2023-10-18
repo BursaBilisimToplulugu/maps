@@ -24,7 +24,8 @@ const Input = ({ className = '', label, children, ...props }: Props) => {
       )}
       <input
         className={classNames(
-          'outline-none border-2 border-neutrals-ghostWhite dark:border-neutrals-darkWhite',
+          'outline-none border-2 border-neutrals-ghostWhite',
+          'dark:border-neutrals-darkWhite dark:bg-transparent',
           'rounded-xl px-4 py-3 text-sm leading-5',
           'placeholder:text-neutrals-navyGrey'
         )}

@@ -4,8 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
+@layer base {
+  body {
+    @apply dark:bg-black dark:text-white min-h-screen relative;
+  }
 }
 
 body {
