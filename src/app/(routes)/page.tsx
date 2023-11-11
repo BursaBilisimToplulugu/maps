@@ -1,4 +1,4 @@
-import Icon from "../common/components/Icon";
+import Icon from '../common/components/Icon';
 
 export default function Home() {
   return (
