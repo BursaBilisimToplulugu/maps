@@ -80,6 +80,8 @@ module.exports = {
           grey: '#B1B5C3',
           white: '#F4F5F6',
           navyWhite: '#E6E8EC',
+          balticSea: '#23262F',
+          milkWhite: '#FCFCFD',
         },
       },
     },
