@@ -32,6 +32,7 @@ export default function RootLayout({
       >
         <Navbar />
         <MapSection />
+        {auth}
       </body>
     </html>
   );
