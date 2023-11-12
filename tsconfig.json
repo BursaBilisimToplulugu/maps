@@ -22,7 +22,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/icons/*": ["./src/app/common/assets/icons/*"],
-      "@/common/*": ["./src/app/common/*"]
+      "@/common/*": ["./src/app/common/*"],
+      "@/fonts/*": ["./src/app/common/assets/fonts/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
