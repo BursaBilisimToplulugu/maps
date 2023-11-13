@@ -38,6 +38,9 @@ module.exports = {
           balticSea: '#23262F',
           milkWhite: '#FCFCFD',
         },
+        dark: {
+          black: '#18191D',
+        },
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],

@@ -26,4 +26,5 @@ export const Search: Story<(typeof Input)['Search']> = (args: any) => (
 );
 Search.args = {
   className: 'w-96',
+  clearAble: true,
 };

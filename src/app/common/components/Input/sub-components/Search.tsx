@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { AnimatePresence, motion } from 'framer-motion';
 import {
   DetailedHTMLProps,
   InputHTMLAttributes,
@@ -12,6 +13,8 @@ type Props = DetailedHTMLProps<
   HTMLInputElement
 > & {
   inputClassName?: string;
+  clearAble?: boolean;
+  onClear?: () => void;
 };
 
 const Search = ({
@@ -19,6 +22,8 @@ const Search = ({
   inputClassName,
   value,
   onChange,
+  clearAble,
+  onClear,
   ...props
 }: Props) => {
   const [internalValue, setinternalValue] = useState<typeof value>('');
@@ -29,7 +34,7 @@ const Search = ({
   return (
     <div
       className={classNames(
-        'flex items-center text-sm py-2 px-4 bg-white rounded-full',
+        'flex items-center text-sm py-2 px-4 bg-white dark:bg-dark-black dark:text-white rounded-full',
         className
       )}
     >
@@ -46,20 +51,33 @@ const Search = ({
         }}
         {...props}
       />
-      <div className="flex items-center">
+      <div className="flex items-center flex-nowrap overflow-hidden">
         <button className="bg-primary-navyBlue p-1 rounded-full">
           <LuSearch color="white" size={18} />
         </button>
-        {internalValue && (
-          <>
-            <span className="w-[1px] h-full bg-neutrals-darkWhite mx-2">
-              &nbsp;
-            </span>
-            <button className="rounded-full group hover:bg-neutrals-darkWhite p-1 transition-colors">
-              <LuX size={18} className="text-neutrals-grey" />
-            </button>
-          </>
-        )}
+        <AnimatePresence>
+          {internalValue && clearAble && (
+            <motion.span
+              className="flex flex-nowrap items-center"
+              initial={{ width: 0 }}
+              animate={{ width: 'auto' }}
+              exit={{ width: 0 }}
+            >
+              <span className="w-[1px] h-full bg-neutrals-navyWhite mx-2">
+                &nbsp;
+              </span>
+              <button
+                onClick={() => {
+                  setinternalValue('');
+                  onClear?.();
+                }}
+                className="rounded-full group hover:bg-neutrals-darkWhite p-1 transition-colors"
+              >
+                <LuX size={18} color={'#777E91'} />
+              </button>
+            </motion.span>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
