@@ -1,5 +1,6 @@
 import Input from '@/app/common/components/Input';
 import { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 import {} from 'react-icons';
 
 const meta = {
@@ -21,9 +22,19 @@ Simple.args = {
   placeholder: 'Enter your name',
 };
 
-export const Search: Story<(typeof Input)['Search']> = (args: any) => (
-  <Input.Search {...args} />
-);
+export const Search: Story<(typeof Input)['Search']> = (args: any) => {
+  const [value, setvalue] = useState('');
+  return (
+    <div>
+      <Input.Search
+        value={value}
+        onChange={(e) => setvalue(e.target.value)}
+        {...args}
+      />{' '}
+      {value}
+    </div>
+  );
+};
 Search.args = {
   className: 'w-96',
   clearAble: true,
