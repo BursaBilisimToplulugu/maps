@@ -5,6 +5,7 @@ module.exports = {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/stories/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -38,14 +39,14 @@ module.exports = {
         },
       },
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
-        DMSans: ['DM Sans', 'sans-serif'],
+        poppins: ['Poppins','sans-serif'],
+        DMSans: ['DM Sans','sans-serif'],
       },
       fontSize: {
-        xs: ['0.75rem', '1.25rem'],
-        sm: ['0.875rem', '1.5rem'],
-        base: ['1rem', '1.5rem'],
-        lg: ['1.5rem', '2rem'],
+        xs: ['0.75rem','1.25rem'],
+        sm: ['0.875rem','1.5rem'],
+        base: ['1rem','1.5rem'],
+        lg: ['1.5rem','2rem'],
         xl: [
           '2rem',
           {
@@ -90,4 +91,4 @@ module.exports = {
     },
   },
   plugins: [],
-};
+}

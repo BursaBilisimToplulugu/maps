@@ -6,10 +6,27 @@ const preview: Preview = {
     actions: { argTypesRegex: '^on[A-Z].*' },
     globalTypes: {
       darkMode: {
-        stylePreview: true,
-        darkClass: 'dark',
-        lightClass: 'light',
+        defaultValue: true,
       },
+      className: {
+        defaultValue: 'dark',
+      },
+    },
+    themes: {
+      clearable: false,
+      list: [
+        {
+          name: 'Light',
+          class: [],
+          color: '#ffffff',
+          default: true,
+        },
+        {
+          name: 'Dark',
+          class: ['dark'],
+          color: '#000000',
+        },
+      ],
     },
     controls: {
       matchers: {

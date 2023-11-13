@@ -20,3 +20,10 @@ Simple.args = {
   label: 'Name',
   placeholder: 'Enter your name',
 };
+
+export const Search: Story<(typeof Input)['Search']> = (args: any) => (
+  <Input.Search {...args} />
+);
+Search.args = {
+  className: 'w-96',
+};

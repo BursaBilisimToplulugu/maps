@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { DetailedHTMLProps, InputHTMLAttributes } from 'react';
+import Search from './sub-components/Search';
 import Single from './sub-components/Single';
 
 export interface DefaultInputProps
@@ -36,5 +37,6 @@ const Input = ({ className = '', label, children, ...props }: Props) => {
 };
 
 Input.Single = Single;
+Input.Search = Search;
 
 export default Input;

@@ -6,15 +6,13 @@ const config: StorybookConfig = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-onboarding',
-    'storybook-tailwind-dark-mode',
+    'storybook-addon-themes',
   ],
   framework: {
     name: '@storybook/nextjs',
     options: {},
   },
-  core: {
-    builder: '@storybook/builder-webpack5',
-  },
+  core: {},
   docs: {
     autodocs: 'tag',
   },
