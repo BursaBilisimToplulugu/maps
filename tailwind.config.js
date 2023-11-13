@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ['class'],
+  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -33,20 +33,21 @@ module.exports = {
           darkGrey: '#353945',
           navyGrey: '#777E90',
           grey: '#B1B5C3',
-          darkWhite: '#E6E8EC',
           white: '#F4F5F6',
-          ghostWhite: '#FCFCFD',
+          navyWhite: '#E6E8EC',
+          balticSea: '#23262F',
+          milkWhite: '#FCFCFD',
         },
       },
       fontFamily: {
-        poppins: ['Poppins','sans-serif'],
-        DMSans: ['DM Sans','sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
+        DMSans: ['DM Sans', 'sans-serif'],
       },
       fontSize: {
-        xs: ['0.75rem','1.25rem'],
-        sm: ['0.875rem','1.5rem'],
-        base: ['1rem','1.5rem'],
-        lg: ['1.5rem','2rem'],
+        xs: ['0.75rem', '1.25rem'],
+        sm: ['0.875rem', '1.5rem'],
+        base: ['1rem', '1.5rem'],
+        lg: ['1.5rem', '2rem'],
         xl: [
           '2rem',
           {
@@ -91,4 +92,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};
