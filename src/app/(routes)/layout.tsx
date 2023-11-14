@@ -26,7 +26,7 @@ export default function RootLayout({
       <body
         className={classNames(
           poppins.className,
-          'flex items-stretch min-h-screen'
+          'flex items-stretch min-safe-h-screen'
         )}
       >
         <Navbar />
