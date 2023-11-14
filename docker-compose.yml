@@ -1,14 +1,11 @@
-version: '3.8'
+version: '3.5'
 services:
   app:
-    image: bbt-maps
     build:
-      context: ./
-      target: dev
+      context: .
       dockerfile: Dockerfile
     volumes:
       - .:/app
       - /app/node_modules
-      - /app/.next
     ports:
       - '3000:3000'
