@@ -2,6 +2,7 @@
 const nextConfig = {
   env: {},
   reactStrictMode: false,
-};
+  output: "standalone"
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
