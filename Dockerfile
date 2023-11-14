@@ -3,7 +3,7 @@ RUN apk add --no-cache g++ make py3-pip libc6-compat
 RUN npm install -g pnpm
 WORKDIR /app
 COPY package*.json ./
-EXPOSE 8080
+EXPOSE 3000
 
 FROM base as builder
 WORKDIR /app
