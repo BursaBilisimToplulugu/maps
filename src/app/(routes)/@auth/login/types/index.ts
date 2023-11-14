@@ -8,12 +8,12 @@ type Props = DetailedHTMLProps<
   onClose?: () => void;
 };
 
-type ServerModalProps = Props & {
+export type ServerModalProps = Props & {
   goBackOnClose?: true;
   backHref: string;
 };
 
-type ClientModalProps = Props & {
+export type ClientModalProps = Props & {
   goBackOnClose?: false;
 };
 

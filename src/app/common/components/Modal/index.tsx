@@ -1,5 +1,5 @@
 'use client';
-import { ModalProps } from '@/app/(routes)/@auth/login/types';
+import { ModalProps, ServerModalProps } from '@/app/(routes)/@auth/login/types';
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
@@ -37,7 +37,12 @@ const Modal = ({
           setTimeout(() => {
             dialog.current?.close();
             if (goBackOnClose) {
-              router.back();
+              if (window.history.length > 2) {
+                router.back();
+              } else {
+                const { backHref } = props as ServerModalProps;
+                router.push(backHref || '/');
+              }
             }
           }, 300);
         }
