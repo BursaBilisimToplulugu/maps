@@ -30,7 +30,6 @@ jobs:
 
       - run: echo "${{ secrets.ENV_FILE }}" > .env
       - run: npx dotenv-to-yaml .env .env.yaml
-      - run: echo "$(cat .env.yaml)"
 
       - run: echo "IMAGE_NAME=europe-west1-docker.pkg.dev/bbt-cms/bbt-maps/ui" >> $GITHUB_ENV
 
