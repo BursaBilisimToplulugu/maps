@@ -1,8 +1,10 @@
 'use client';
-import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
-import { memo } from 'react';
+import { GoogleMap,Marker,useJsApiLoader } from '@react-google-maps/api'
+import { memo } from 'react'
 
 type Props = {};
+
+//deployment stage
 
 const Map = (props: Props) => {
   const { isLoaded } = useJsApiLoader({
