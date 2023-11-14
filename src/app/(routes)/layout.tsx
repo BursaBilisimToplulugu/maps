@@ -16,7 +16,6 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
   auth,
 }: {
   children: React.ReactNode;
@@ -32,7 +31,7 @@ export default function RootLayout({
       >
         <Navbar />
         <MapSection />
-        {auth}
+        {auth && auth}
       </body>
     </html>
   );

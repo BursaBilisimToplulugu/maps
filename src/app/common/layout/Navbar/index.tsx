@@ -8,7 +8,7 @@ type Props = {};
 const Navbar = (props: Props) => {
   const [isActive, setisActive] = useState(false);
   return (
-    <motion.nav className="flex flex-col z-10 items-center py-10 px-6">
+    <motion.nav className="hidden md:flex flex-col z-10 items-center md:py-10 md:px-6 py-5 px-3">
       <button onClick={() => setisActive((prev) => !prev)}>
         <Hamburger isActive={isActive} />
       </button>

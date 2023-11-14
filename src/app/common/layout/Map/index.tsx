@@ -9,7 +9,6 @@ const Map = (props: Props) => {
     id: 'google-map-script',
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
   });
-  console.log(process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
   return isLoaded ? (
     <GoogleMap
       mapContainerClassName="w-full h-screen"
