@@ -35,8 +35,6 @@ body {
   }
 }
 
-
-
 ::-webkit-scrollbar {
   /* width of vertical scroll */
   @apply w-1;
