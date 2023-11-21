@@ -37,6 +37,7 @@ module.exports = {
           navyWhite: '#E6E8EC',
           balticSea: '#23262F',
           milkWhite: '#FCFCFD',
+          gray: '#777E91',
         },
         dark: {
           black: '#18191D',
