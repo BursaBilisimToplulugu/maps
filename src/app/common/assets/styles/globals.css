@@ -15,6 +15,12 @@ body {
   @apply font-poppins;
 }
 
+:root {
+  --scrollbar-track-bg: #e6e8ec;
+  --scrollbar-thumb-bg: #3b71fe;
+  --scrollbar-thumb-hover-bg: #1061fe;
+}
+
 .min-safe-h-screen {
   /* equivalent to 100dvh in major browsers */
   min-height: calc(
@@ -26,5 +32,34 @@ body {
   .min-safe-h-screen {
     /* for ios safari 15, safe-area-inset-bottom is 0, so a special fix apply here */
     min-height: -webkit-fill-available;
+  }
+}
+
+::-webkit-scrollbar {
+  /* width of vertical scroll */
+  @apply w-1;
+
+  /* height of horizontal scroll */
+  @apply h-1;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-[var(--scrollbar-track-bg)] rounded-[25rem];
+}
+
+::-webkit-scrollbar-thumb {
+  @apply min-h-[5rem] ;
+  @apply bg-[var(--scrollbar-thumb-bg)] rounded-[25rem] border-none;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-[var(--scrollbar-thumb-hover-bg)];
+}
+
+/* Firefox */
+@supports (scrollbar-color: var(--scrollbar-thumb-bg) var(--scrollbar-track-bg)) {
+  * {
+    scrollbar-color: var(--scrollbar-thumb-bg) var(--scrollbar-track-bg);
+    scrollbar-width: thin;
   }
 }
