@@ -1,6 +1,8 @@
 'use client';
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
+import classNames from 'classnames';
 import { memo, useEffect, useState } from 'react';
+import { MdOutlineMyLocation } from 'react-icons/md';
 import { smoothZoom } from './utils/smoothZoom';
 
 type Props = {};
@@ -91,9 +93,13 @@ const Map = (props: Props) => {
       {location && location?.latitude > 0 && location?.longitude > 0 && (
         <button
           onClick={locateMe}
-          className="absolute bottom-5 right-5 bg-white"
+          className={classNames(
+            'absolute bottom-5 right-5 bg-white w-[50px] h-[50px]',
+            'rounded-full flex items-center justify-center',
+            'backdrop-filter backdrop-blur-sm bg-opacity-50'
+          )}
         >
-          click me
+          <MdOutlineMyLocation size={32} className="text-neutrals-gray " />
         </button>
       )}
     </GoogleMap>
