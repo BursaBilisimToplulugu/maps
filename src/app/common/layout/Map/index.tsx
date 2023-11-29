@@ -7,8 +7,6 @@ import { smoothZoom } from './utils/smoothZoom';
 
 type Props = {};
 
-//deployment stage
-
 const Map = (props: Props) => {
   const [map, setMap] = useState<google.maps.Map | null>(null);
   const [location, setLocation] = useState<GeolocationCoordinates | null>(null);

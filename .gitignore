@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+#pycharm ide configs
+.idea
+.idea 2
+
 # testing
 /coverage
 

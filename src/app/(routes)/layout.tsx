@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 import '../common/assets/styles/globals.css';
 import MapSection from '../common/layout/Map/MapSection';
 import Navbar from '../common/layout/Navbar';
+import Card from '@/common/components/Card';
 const Map = dynamic(() => import('../common/layout/Map'), {
   ssr: false,
 });
