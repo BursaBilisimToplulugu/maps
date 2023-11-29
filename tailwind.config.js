@@ -20,6 +20,7 @@ module.exports = {
           blue: '#8BC5E5',
           purple: '#92A5EF',
           green: '#58C27D',
+          logoPurple: '#242953',
         },
         secondary: {
           lightBlue: '#A4CDE3',

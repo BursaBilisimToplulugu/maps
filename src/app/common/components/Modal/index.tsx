@@ -1,5 +1,8 @@
 'use client';
-import { ModalProps, ServerModalProps } from '@/app/(routes)/@auth/login/types';
+import {
+  ModalProps,
+  ServerModalProps,
+} from '@/app/(routes)/(main)/@auth/login/types';
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';

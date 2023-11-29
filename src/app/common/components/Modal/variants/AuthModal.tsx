@@ -1,4 +1,4 @@
-import { ModalProps } from '@/app/(routes)/@auth/login/types';
+import { ModalProps } from '@/app/(routes)/(main)/@auth/login/types';
 import classNames from 'classnames';
 import Modal from '..';
 
