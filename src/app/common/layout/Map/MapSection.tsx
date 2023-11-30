@@ -5,10 +5,13 @@ import Map from '.';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import Hamburger from '../Navbar/sub-components/Hamburger';
+import { Place } from './types/Place';
 
-type Props = {};
+type Props = {
+  places: Place[];
+};
 
-const MapSection = (props: Props) => {
+const MapSection = ({ places }: Props) => {
   const [searchValue, setsearchValue] = useState<string>('');
   const [isActive, setisActive] = useState(false);
   return (
@@ -33,7 +36,7 @@ const MapSection = (props: Props) => {
           <Button className="!font-normal">Giriş Yap</Button>
         </Link>
       </div>
-      <Map />
+      <Map places={places} />
     </div>
   );
 };

@@ -3,13 +3,14 @@ import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import classNames from 'classnames';
 import { memo, useEffect, useState } from 'react';
 import { MdOutlineMyLocation } from 'react-icons/md';
+import { Place } from './types/Place';
 import { smoothZoom } from './utils/smoothZoom';
 
-type Props = {};
+type Props = {
+  places: Place[];
+};
 
-//deployment stage
-
-const Map = (props: Props) => {
+const Map = ({ places }: Props) => {
   const [map, setMap] = useState<google.maps.Map | null>(null);
   const [location, setLocation] = useState<GeolocationCoordinates | null>(null);
   const [center, setCenter] = useState<{ lat: number; lng: number }>({
@@ -76,12 +77,14 @@ const Map = (props: Props) => {
         disableDefaultUI: true,
       }}
     >
-      <Marker
-        position={{ lat: 40.222568, lng: 28.820867 }}
-        onClick={(e) => {
-          console.log(e.latLng?.toJSON());
-        }}
-      />
+      {places.map((place) => {
+        return (
+          <Marker
+            key={place.id}
+            position={{ lat: place.latitude, lng: place.longitude }}
+          />
+        );
+      })}
       <Marker
         position={{
           lat: location?.latitude || 40.222568,

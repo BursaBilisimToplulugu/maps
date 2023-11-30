@@ -6,6 +6,7 @@ type Props = DetailedHTMLProps<
 > & {
   isDefaultOpen?: boolean;
   onClose?: () => void;
+  isOpen?: boolean;
 };
 
 export type ServerModalProps = Props & {

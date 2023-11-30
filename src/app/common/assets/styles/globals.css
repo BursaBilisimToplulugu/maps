@@ -8,7 +8,6 @@
   body {
     @apply dark:bg-black dark:text-white min-h-screen relative;
   }
-  
 }
 
 body {
@@ -48,7 +47,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply min-h-[5rem] ;
+  @apply min-h-[5rem];
   @apply bg-[var(--scrollbar-thumb-bg)] rounded-[25rem] border-none;
 }
 
@@ -57,7 +56,9 @@ body {
 }
 
 /* Firefox */
-@supports (scrollbar-color: var(--scrollbar-thumb-bg) var(--scrollbar-track-bg)) {
+@supports (
+  scrollbar-color: var(--scrollbar-thumb-bg) var(--scrollbar-track-bg)
+) {
   * {
     scrollbar-color: var(--scrollbar-thumb-bg) var(--scrollbar-track-bg);
     scrollbar-width: thin;
