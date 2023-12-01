@@ -1,4 +1,6 @@
+import { authOptions } from '@/app/api/auth/authOptions';
 import Divider from '@/app/common/components/Divider';
+import { getServerSession } from 'next-auth';
 import Link from 'next/link';
 import { PropsWithChildren } from 'react';
 import { LuMap, LuSettings, LuUser } from 'react-icons/lu';
@@ -7,7 +9,14 @@ import MenuButton from './profile/components/MenuButton';
 
 type Props = {} & PropsWithChildren;
 
-const DashboardLayout = ({ children }: Props) => {
+export interface CustomSession {
+  user: {
+    role: string;
+  };
+}
+
+const DashboardLayout = async ({ children }: Props) => {
+  const session: CustomSession | null = await getServerSession(authOptions);
   return (
     <div className="flex items-stretch">
       <aside className="hidden md:flex md:w-[300px] bg-neutrals-navyWhite flex-col">
@@ -22,11 +31,13 @@ const DashboardLayout = ({ children }: Props) => {
             title="Profil"
             icon={<LuUser size={24} />}
           />
-          <MenuButton
-            url="/dashboard/admin"
-            title="Admin"
-            icon={<LuSettings size={24} />}
-          />
+          {session && session.user?.['role'] === 'admin' && (
+            <MenuButton
+              url="/dashboard/admin"
+              title="Admin"
+              icon={<LuSettings size={24} />}
+            />
+          )}
         </ul>
       </aside>
       <main className="flex-1 bg-white min-h-screen overflow-y-scroll shadow-inner">
