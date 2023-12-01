@@ -12,6 +12,8 @@ type Props = {} & PropsWithChildren;
 export interface CustomSession {
   user: {
     role: string;
+    picture_url: string;
+    full_name: string;
   };
 }
 

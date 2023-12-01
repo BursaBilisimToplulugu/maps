@@ -12,6 +12,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "@react-google-maps/api": "^2.19.2",
     "@types/node": "20.4.5",
     "@types/react": "18.2.18",
@@ -35,6 +36,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.11.0",
     "react-leaflet": "^4.2.1",
+    "react-popper": "^2.3.0",
     "react-select": "^5.8.0",
     "react-spring-bottom-sheet": "^3.4.1",
     "react-toastify": "^9.1.3",

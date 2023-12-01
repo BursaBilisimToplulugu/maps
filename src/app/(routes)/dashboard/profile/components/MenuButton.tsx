@@ -4,13 +4,13 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ReactElement, useEffect, useState } from 'react';
 
-type Props = {
+export type MenuButtonProps = {
   title: string;
   icon: ReactElement;
   url: string;
 };
 
-const MenuButton = ({ icon, title, url }: Props) => {
+const MenuButton = ({ icon, title, url }: MenuButtonProps) => {
   const pathname = usePathname();
   const [isSelected, setisSelected] = useState(false);
 
