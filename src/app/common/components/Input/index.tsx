@@ -14,7 +14,14 @@ export interface DefaultInputProps
 
 type Props = DefaultInputProps;
 
-const Input = ({ className = '', label, children, error, ...props }: Props) => {
+const Input = ({
+  className = '',
+  label,
+  children,
+  error,
+  disabled,
+  ...props
+}: Props) => {
   return (
     <div className="flex flex-col space-y-3">
       {label && typeof label === 'string' ? (
@@ -35,8 +42,10 @@ const Input = ({ className = '', label, children, error, ...props }: Props) => {
           'dark:border-neutrals-darkWhite dark:bg-transparent',
           'rounded-xl px-4 py-3 text-sm leading-5',
           'placeholder:text-neutrals-navyGrey',
-          !!error ? 'border-red-500' : ''
+          !!error ? 'border-red-500' : '',
+          disabled && 'bg-neutrals-navyWhite'
         )}
+        disabled={disabled}
         {...props}
       />
     </div>

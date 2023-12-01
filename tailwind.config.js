@@ -73,7 +73,7 @@ module.exports = {
           '3rem',
           {
             lineHeight: '3.5rem',
-            letterSpacing: '-0.06em',
+            // letterSpacing: '-0.06em',
             fontWeight: '700',
           },
         ],
@@ -81,7 +81,7 @@ module.exports = {
           '4rem',
           {
             lineHeight: '4rem',
-            letterSpacing: '-0.08em',
+            // letterSpacing: '-0.08em',
             fontWeight: '700',
           },
         ],
@@ -89,7 +89,7 @@ module.exports = {
           '6rem',
           {
             lineHeight: '6rem',
-            letterSpacing: '-0.12em',
+            // letterSpacing: '-0.12em',
             fontWeight: '700',
           },
         ],

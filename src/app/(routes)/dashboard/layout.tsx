@@ -15,6 +15,7 @@ export interface CustomSession {
     role: string;
     picture_url: string;
     full_name: string;
+    id: string;
   };
 }
 
@@ -44,7 +45,7 @@ const DashboardLayout = async ({ children }: Props) => {
           )}
         </ul>
       </aside>
-      <main className="flex-1 bg-white min-h-screen overflow-y-scroll shadow-inner">
+      <main className="flex-1 bg-white min-h-screen overflow-y-scroll shadow-inner px-4 py-8">
         {children}
       </main>
     </div>
