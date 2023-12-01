@@ -13,6 +13,7 @@ type Props = {};
 
 const LoginForm = (props: Props) => {
   const [error, seterror] = useState<string | null>(null);
+  const { update } = useSession();
   const router = useRouter();
   const { data } = useSession();
   const pathname = usePathname();

@@ -1,6 +1,7 @@
 import { authOptions } from '@/app/api/auth/authOptions';
 import Divider from '@/app/common/components/Divider';
 import { getServerSession } from 'next-auth';
+import { revalidatePath } from 'next/cache';
 import Link from 'next/link';
 import { PropsWithChildren } from 'react';
 import { LuMap, LuSettings, LuUser } from 'react-icons/lu';
@@ -19,6 +20,7 @@ export interface CustomSession {
 
 const DashboardLayout = async ({ children }: Props) => {
   const session: CustomSession | null = await getServerSession(authOptions);
+  if (session) revalidatePath('/');
   return (
     <div className="flex items-stretch">
       <aside className="hidden md:flex md:w-[300px] bg-neutrals-navyWhite flex-col">
