@@ -3,10 +3,10 @@ import Alert from '@/app/common/components/Alert';
 import Button from '@/app/common/components/Button';
 import Input from '@/app/common/components/Input';
 import { useFormik } from 'formik';
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { LoginFormValues } from '../types/login';
 
 type Props = {};
@@ -14,6 +14,8 @@ type Props = {};
 const LoginForm = (props: Props) => {
   const [error, seterror] = useState<string | null>(null);
   const router = useRouter();
+  const { data } = useSession();
+  const pathname = usePathname();
   const { handleSubmit, getFieldProps, errors } = useFormik<LoginFormValues>({
     initialValues: {
       email: '',
@@ -36,6 +38,10 @@ const LoginForm = (props: Props) => {
       } else router.push('/dashboard/profile');
     },
   });
+  useEffect(() => {
+    if (data?.user && pathname.includes('/')) router.push('/dashboard/profile');
+  }, [data, pathname, router]);
+
   return (
     <form onSubmit={handleSubmit} className="w-full py-4 md:py-0">
       <div className="flex flex-col gap-y-8 w-full md:gap-y-6 lg:min-w-[300px] 2xl:min-w-[350px] px-4 md:px-0 md:max-w-[350px]">
