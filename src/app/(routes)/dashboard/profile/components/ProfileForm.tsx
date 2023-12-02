@@ -2,6 +2,7 @@
 import Input from '@/app/common/components/Input';
 import { useFormik } from 'formik';
 import { User } from '../types/user';
+import ProfileDropZone from './ProfileDropZone';
 
 type Props = {
   user: User;
@@ -26,9 +27,12 @@ const ProfileForm = ({ user }: Props) => {
     },
   });
   return (
-    <form onSubmit={handleSubmit} className="grid grid-cols-3 gap-4">
-      <Input label={'Ad - Soyad'} disabled {...getFieldProps('full_name')} />
-      <Input label={'Email'} disabled {...getFieldProps('email')} />
+    <form onSubmit={handleSubmit} className="space-y-8">
+      <div className="grid grid-cols-3 gap-4">
+        <Input label={'Ad - Soyad'} disabled {...getFieldProps('full_name')} />
+        <Input label={'Email'} disabled {...getFieldProps('email')} />
+      </div>
+      <ProfileDropZone />
     </form>
   );
 };
