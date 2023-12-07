@@ -11,7 +11,6 @@ const ProfilePage = async (props: Props) => {
   const session: CustomSession | null = await getServerSession(authOptions);
   const userId = session?.user.id;
   const { data } = await instance.get<User>(`/users/${userId}`);
-  console.log({ data });
   return (
     <div className="">
       <h2 className="text-3xl mb-10">Profil</h2>

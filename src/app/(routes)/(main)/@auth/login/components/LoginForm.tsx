@@ -6,7 +6,7 @@ import { useFormik } from 'formik';
 import { signIn, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { LoginFormValues } from '../types/login';
 
 type Props = {};
@@ -17,31 +17,32 @@ const LoginForm = (props: Props) => {
   const router = useRouter();
   const { data } = useSession();
   const pathname = usePathname();
-  const { handleSubmit, getFieldProps, errors } = useFormik<LoginFormValues>({
-    initialValues: {
-      email: '',
-      password: '',
-    },
-    onSubmit: async (values, { setFieldError }) => {
-      const res = await signIn('credentials', {
-        email: values.email,
-        password: values.password,
-        redirect: false,
-      });
-      if (res?.error) {
-        const errorObject = JSON.parse(res.error);
-        if (errorObject.type === 'text') seterror(errorObject.message);
-        else {
-          errorObject.fields.forEach((error: any) => {
-            setFieldError(error.field, error.message);
-          });
-        }
-      } else router.push('/dashboard/profile');
-    },
-  });
-  useEffect(() => {
-    if (data?.user && pathname.includes('/')) router.push('/dashboard/profile');
-  }, [data, pathname, router]);
+  const { handleSubmit, getFieldProps, errors, isSubmitting } =
+    useFormik<LoginFormValues>({
+      initialValues: {
+        email: '',
+        password: '',
+      },
+      onSubmit: async (values, { setFieldError }) => {
+        const res = await signIn('credentials', {
+          email: values.email,
+          password: values.password,
+          redirect: false,
+        });
+        if (res?.error) {
+          const errorObject = JSON.parse(res.error);
+          if (errorObject.type === 'text') seterror(errorObject.message);
+          else {
+            errorObject.fields.forEach((error: any) => {
+              setFieldError(error.field, error.message);
+            });
+          }
+        } else router.push('/dashboard/profile');
+      },
+    });
+  // useEffect(() => {
+  //   if (data?.user && pathname.includes('/')) router.push('/dashboard/profile');
+  // }, [data, pathname, router]);
 
   return (
     <form onSubmit={handleSubmit} className="w-full py-4 md:py-0">
@@ -78,7 +79,9 @@ const LoginForm = (props: Props) => {
             Şifremi Unuttum
           </Link>
         </span>
-        <Button type="submit">Giriş Yap</Button>
+        <Button disabled={isSubmitting} type="submit">
+          Giriş Yap
+        </Button>
       </div>
     </form>
   );

@@ -16,6 +16,8 @@ export interface CustomSession {
     picture_url: string;
     full_name: string;
     id: string;
+    access_token: string;
+    refresh_token: string;
   };
 }
 

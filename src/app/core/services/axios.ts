@@ -2,6 +2,7 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 
 const instance = axios.create({
+  // baseURL: 'http://localhost:8080',
   baseURL: 'https://bbt-cms-api-of7nyq5bbq-ew.a.run.app',
   withCredentials: true,
 });
@@ -9,9 +10,11 @@ const instance = axios.create({
 instance.interceptors.request.use(
   (config) => {
     const token = config.headers.Authorization as string;
-    const decodedToken = jwtDecode(token);
-    if (decodedToken.exp && decodedToken.exp * 1000 < Date.now()) {
-      console.log('token expired');
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      if (decodedToken.exp && decodedToken.exp * 1000 < Date.now()) {
+        console.log('token expired');
+      }
     }
     return config;
   },
