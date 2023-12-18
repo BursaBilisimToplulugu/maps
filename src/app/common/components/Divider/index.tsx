@@ -1,21 +1,35 @@
-interface Props {
-  variant?: "horizontal" | "vertical";
-  size?: "normal" | "thick";
+import classNames from 'classnames';
+import { DetailedHTMLProps, HTMLAttributes } from 'react';
+
+interface Props
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  variant?: 'horizontal' | 'vertical';
+  size?: 'normal' | 'thick';
+  containerClassName?: string;
 }
 
-const Divider = ({ variant = "vertical", size = "normal" }: Props) => {
+const Divider = ({
+  variant = 'vertical',
+  size = 'normal',
+  className = '',
+  containerClassName = '',
+  ...props
+}: Props) => {
   return (
-    <div
-      className={`flex ${
-        variant === "vertical"
-          ? size === "thick"
-            ? "h-0.5 w-full"
-            : "h-px w-full"
-          : size === "thick"
-          ? "w-0.5 h-full"
-          : "w-px h-full"
-      } bg-[#E6E8EC]`}
-    ></div>
+    <div className={classNames(containerClassName)}>
+      <div
+        className={classNames(
+          `flex dark:bg-neutrals-grey bg-neutrals-balticSea`,
+          {
+            'h-0.5 w-full dark:bg-neutrals-grey bg-neutrals-balticSea':
+              variant === 'vertical',
+            'w-0.5 h-full dark:bg-neutrals-grey bg-neutrals-balticSea':
+              variant === 'horizontal',
+          },
+          className
+        )}
+      ></div>
+    </div>
   );
 };
 
