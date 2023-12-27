@@ -1,5 +1,7 @@
 type Props = {};
 
+export const dynamic = 'force-dynamic';
+
 const ProfilePage = async (props: Props) => {
   return (
     <div className="">

@@ -4,7 +4,7 @@ const nextConfig = {
   reactStrictMode: false,
   experimental: {
     serverActions: {
-      allowedOrigins: ['https://bbt-cms-api-of7nyq5bbq-ew.a.run.app'],
+      allowedOrigins: ['bbt-cms-api-of7nyq5bbq-ew.a.run.app', 'localhost:8080'],
     },
   },
   images: {
