@@ -32,7 +32,7 @@ const ProfileForm = ({ user }: Props) => {
         <Input label={'Ad - Soyad'} disabled {...getFieldProps('full_name')} />
         <Input label={'Email'} disabled {...getFieldProps('email')} />
       </div>
-      <ProfileDropZone />
+      <ProfileDropZone remoteUrl={user.picture_url} />
     </form>
   );
 };

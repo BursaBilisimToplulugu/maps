@@ -3,13 +3,15 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
-type Props = {};
+type Props = {
+  remoteUrl?: string;
+};
 
 interface DropZoneFile extends File {
   preview: string;
 }
 
-const ProfileDropZone = (props: Props) => {
+const ProfileDropZone = ({ remoteUrl }: Props) => {
   const [file, setFile] = useState<DropZoneFile | null>(null);
   const { getRootProps, getInputProps } = useDropzone({
     maxFiles: 1,
@@ -22,14 +24,13 @@ const ProfileDropZone = (props: Props) => {
         preview: URL.createObjectURL(acceptedFiles[0]),
       });
 
-      console.log('file here', file.preview);
       setFile(file);
     },
   });
   useEffect(() => {
     // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
     return () => {
-      file && URL.revokeObjectURL(file.preview);
+      file && URL.revokeObjectURL(file.preview as DropZoneFile['preview']);
     };
   }, []);
   return (
@@ -43,15 +44,18 @@ const ProfileDropZone = (props: Props) => {
       })}
     >
       <input {...getInputProps()} />
-      {file ? (
+      {(file && file.preview) || remoteUrl ? (
         <Image
-          fill
+          sizes={'200px'}
+          width={200}
+          height={200}
           className="object-cover"
           alt="profile picture"
-          src={file.preview}
+          priority
+          src={file ? file.preview : (remoteUrl as string)}
           // Revoke data uri after image is loaded
           onLoad={() => {
-            URL.revokeObjectURL(file.preview);
+            file && URL.revokeObjectURL(file.preview);
           }}
         />
       ) : (
