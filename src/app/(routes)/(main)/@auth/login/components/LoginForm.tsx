@@ -3,19 +3,18 @@ import Alert from '@/app/common/components/Alert';
 import Button from '@/app/common/components/Button';
 import Input from '@/app/common/components/Input';
 import { useFormik } from 'formik';
-import { signIn, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
+import { loginAction } from '../actions/login.action';
 import { LoginFormValues } from '../types/login';
 
 type Props = {};
 
 const LoginForm = (props: Props) => {
   const [error, seterror] = useState<string | null>(null);
-  const { update } = useSession();
   const router = useRouter();
-  const { data } = useSession();
   const pathname = usePathname();
   const { handleSubmit, getFieldProps, errors, isSubmitting } =
     useFormik<LoginFormValues>({
@@ -23,21 +22,17 @@ const LoginForm = (props: Props) => {
         email: '',
         password: '',
       },
-      onSubmit: async (values, { setFieldError }) => {
-        const res = await signIn('credentials', {
-          email: values.email,
-          password: values.password,
-          redirect: false,
-        });
-        if (res?.error) {
-          const errorObject = JSON.parse(res.error);
-          if (errorObject.type === 'text') seterror(errorObject.message);
-          else {
-            errorObject.fields.forEach((error: any) => {
-              setFieldError(error.field, error.message);
-            });
-          }
-        } else router.push('/dashboard/profile');
+      onSubmit: async (values) => {
+        const response = await loginAction(values);
+
+        if (response.data?.access_token) {
+          router.push('/dashboard/profile');
+          return;
+        }
+        if (response.error) {
+          toast.error(response.message);
+        }
+        return response;
       },
     });
   // useEffect(() => {

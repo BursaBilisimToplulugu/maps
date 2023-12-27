@@ -1,18 +1,18 @@
 'use client';
-import { Session } from 'next-auth';
-import { SessionProvider } from 'next-auth/react';
+import { User } from '@/app/(routes)/dashboard/profile/types/user';
+import AuthProvider from '@/app/common/providers/Auth.provider';
 import { PropsWithChildren } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-type Props = { session: Session | null } & PropsWithChildren;
+type Props = { token?: string; session?: User } & PropsWithChildren;
 
-const Providers = ({ children, session }: Props) => {
+const Providers = ({ children, token, session }: Props) => {
   return (
-    <SessionProvider session={session}>
+    <AuthProvider token={token} session={session}>
       <ToastContainer />
       {children}
-    </SessionProvider>
+    </AuthProvider>
   );
 };
 

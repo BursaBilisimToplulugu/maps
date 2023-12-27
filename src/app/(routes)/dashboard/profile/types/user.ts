@@ -4,6 +4,7 @@ export interface User {
   password: string;
   phone: string;
   access_token: string;
+  refresh_token: string;
   picture_url: string;
   role: string;
   comments: Comment[];

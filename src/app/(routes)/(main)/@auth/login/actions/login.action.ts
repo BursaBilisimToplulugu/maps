@@ -1,16 +1,23 @@
 'use server';
+import { instance } from '@/app/core/services/axios';
+import { cookies } from 'next/headers';
 
-import { signIn } from 'next-auth/react';
-import { LoginFormValues } from '../types/login';
+export const loginAction = async (values: any) => {
+  try {
+    const { data } = await instance.post('/auth/login', values);
+    const cookieStore = cookies();
+    console.log('data: ', data.data.access_token);
+    cookieStore.set('token', data.data.access_token, {
+      httpOnly: true,
+      secure: true,
+    });
+    cookieStore.set('refresh_token', data.data.refresh_token, {
+      httpOnly: true,
+      secure: true,
+    });
 
-interface LoginActionProps {
-  values: LoginFormValues;
-}
-
-export const loginAction = async ({ values }: LoginActionProps) => {
-  await signIn('credentials', {
-    email: values.email,
-    password: values.password,
-    redirect: false,
-  });
+    return data;
+  } catch (error: any) {
+    return error.response.data;
+  }
 };

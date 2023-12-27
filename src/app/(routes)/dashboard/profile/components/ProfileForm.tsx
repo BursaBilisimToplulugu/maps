@@ -15,7 +15,7 @@ interface FormValues {
 }
 
 const ProfileForm = ({ user }: Props) => {
-  console.log({ user });
+  // console.log({ user });
   const { handleSubmit, getFieldProps } = useFormik<FormValues>({
     initialValues: {
       full_name: user.full_name,
