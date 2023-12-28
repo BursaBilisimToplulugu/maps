@@ -29,11 +29,11 @@ const ProfileButton = (props: Props) => {
       <button onClick={() => setisOpen((prev) => !prev)}>
         <div
           ref={setReferenceElement}
-          className="w-10 h-10 relative rounded-full overflow-hidden border-2 border-neutrals-navyWhite"
+          className="w-16 h-16 relative rounded-full overflow-hidden border-2 border-neutrals-navyWhite"
         >
           <Image
             priority
-            className="object-contain"
+            className="object-cover"
             alt={`${session?.email}'s profile picture`}
             fill
             src={

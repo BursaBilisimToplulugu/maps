@@ -22,8 +22,8 @@ const instance = axios.create({
 instance.interceptors.request.use(async (config) => {
   // console.log('interceptor');
   const cookiesStore = cookies();
-  const token = cookiesStore.get('token')?.value;
-  const refresh_token = cookiesStore.get('refresh_token')?.value;
+  let token = cookiesStore.get('token')?.value;
+  let refresh_token = cookiesStore.get('refresh_token')?.value;
 
   if (token) {
     const decodedToken = jwtDecode(token);
@@ -44,6 +44,8 @@ instance.interceptors.request.use(async (config) => {
           },
         }).then((res) => res.json());
         // console.log({ response });
+        console.log('got refreshed token');
+        token = response.data.access_token;
         setCookie('token', response.data.access_token, {
           httpOnly: true,
           secure: true,
@@ -51,6 +53,7 @@ instance.interceptors.request.use(async (config) => {
       }
     }
     config.headers.Authorization = `Bearer ${token}`;
+    config.headers.refresh_token = refresh_token;
   }
   return config;
 });

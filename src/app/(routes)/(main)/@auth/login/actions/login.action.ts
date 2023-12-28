@@ -6,7 +6,6 @@ export const loginAction = async (values: any) => {
   try {
     const { data } = await instance.post('/auth/login', values);
     const cookieStore = cookies();
-    console.log('data: ', data.data.access_token);
     cookieStore.set('token', data.data.access_token, {
       httpOnly: true,
       secure: true,

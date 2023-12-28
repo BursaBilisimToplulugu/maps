@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { uploadPictureAction } from '../actions/uploadPicture.actions';
 
 type Props = {
   remoteUrl?: string;
@@ -19,27 +20,32 @@ const ProfileDropZone = ({ remoteUrl }: Props) => {
     accept: {
       'image/*': [],
     },
-    onDrop: (acceptedFiles) => {
+    onDrop: async (acceptedFiles) => {
       const file: DropZoneFile = Object.assign(acceptedFiles[0], {
         preview: URL.createObjectURL(acceptedFiles[0]),
       });
-
+      const formData = new FormData();
+      formData.append('file', file as File);
       setFile(file);
+      await uploadPictureAction(formData);
     },
   });
+
   useEffect(() => {
     // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
     return () => {
       file && URL.revokeObjectURL(file.preview as DropZoneFile['preview']);
     };
   }, []);
+
   return (
     <div
       {...getRootProps({
         className: classNames(
           'dropzone border',
           'border-4 border-primary-logoPurple rounded-3xl w-[200px] h-[200px]',
-          'flex items-center justify-center text-sm relative overflow-hidden'
+          'flex items-center justify-center text-sm relative overflow-hidden',
+          'cursor-pointer'
         ),
       })}
     >
