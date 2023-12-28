@@ -9,8 +9,10 @@ const nextConfig = {
   },
   images: {
     remotePatterns: [
-      { hostname: 'cdn.pixabay.com' },
-      { hostname: 'storage.googleapis.com' },
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
     ],
   },
 };
