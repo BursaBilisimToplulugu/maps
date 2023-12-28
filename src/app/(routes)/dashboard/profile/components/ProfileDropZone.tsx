@@ -59,6 +59,7 @@ const ProfileDropZone = ({ remoteUrl }: Props) => {
           alt="profile picture"
           priority
           src={file ? file.preview : (remoteUrl as string)}
+          loader={({ src }) => src}
           // Revoke data uri after image is loaded
           onLoad={() => {
             file && URL.revokeObjectURL(file.preview);
