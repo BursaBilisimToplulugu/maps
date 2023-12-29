@@ -21,6 +21,7 @@ const Place = ({ place }: PlaceCardProps) => {
         width={400}
         height={300}
         alt={`${place.name} image`}
+        loader={({ src }) => src}
       />
       <div className="flex flex-col justify-between p-6">
         <div className="space-y-4 w-full">
