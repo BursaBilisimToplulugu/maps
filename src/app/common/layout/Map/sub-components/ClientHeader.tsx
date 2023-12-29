@@ -4,7 +4,7 @@ import Card from '@/app/common/components/Card';
 import Divider from '@/app/common/components/Divider';
 import Input from '@/app/common/components/Input';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
-import { useDebounce } from '@uidotdev/usehooks';
+import { useDebounce, useWindowSize } from '@uidotdev/usehooks';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { usePopper } from 'react-popper';
@@ -22,9 +22,10 @@ const ClientHeader = (props: Props) => {
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
     null
   );
+  const { width } = useWindowSize();
   const { styles, attributes } = usePopper(referenceElement, popperElement, {
     modifiers: [{ name: 'offset', options: { offset: [0, 10] } }],
-    placement: 'bottom-start',
+    placement: width && width > 768 ? 'bottom-start' : 'bottom-end',
   });
   const debouncedSearchTerm = useDebounce(searchValue, 300);
   const [parent] = useAutoAnimate();
@@ -62,6 +63,7 @@ const ClientHeader = (props: Props) => {
       <AnimatePresence>
         {foundPlaces && foundPlaces.length && (
           <div
+            className="w-full"
             ref={setPopperElement}
             style={styles.popper}
             {...attributes.popper}
@@ -71,7 +73,7 @@ const ClientHeader = (props: Props) => {
               initial={{ opacity: 0, marginTop: 10 }}
               animate={{ opacity: 1, marginTop: 0 }}
               exit={{ opacity: 0, marginTop: 10 }}
-              className="bg-white text-black p-4 rounded-2xl max-w-[70%]"
+              className="bg-white text-black p-4 rounded-2xl md:max-w-[70%] md:ml-2"
             >
               {foundPlaces.map((place, index) => (
                 <li key={place.id}>

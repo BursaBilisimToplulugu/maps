@@ -9,7 +9,7 @@ interface PlaceCardProps {
 
 const Place = ({ place }: PlaceCardProps) => {
   return (
-    <div className="flex items-stretch border rounded-2xl overflow-hidden">
+    <div className="flex md:flex-row flex-col w-full items-stretch border rounded-2xl overflow-hidden">
       {/* {place.photos ? (
         <Image src={place.photos[0].url} fill alt={`${place.name} image`} />
       ) : (
