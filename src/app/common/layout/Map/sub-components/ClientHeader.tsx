@@ -3,8 +3,9 @@ import { Place } from '@/app/(routes)/dashboard/profile/types/user';
 import Card from '@/app/common/components/Card';
 import Divider from '@/app/common/components/Divider';
 import Input from '@/app/common/components/Input';
+import { useMap } from '@/app/common/hooks/useMap';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
-import { useDebounce, useWindowSize } from '@uidotdev/usehooks';
+import { useClickAway, useDebounce, useWindowSize } from '@uidotdev/usehooks';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { usePopper } from 'react-popper';
@@ -14,9 +15,13 @@ import { searchAction } from '../actions/search.action';
 type Props = {};
 
 const ClientHeader = (props: Props) => {
+  const { setZoom, setCenter } = useMap();
   const [searchValue, setsearchValue] = useState<string>('');
   const [isActive, setisActive] = useState(false);
   const [foundPlaces, setfoundPlaces] = useState<Place[] | null>(null);
+  const ref = useClickAway<HTMLDivElement>(() => {
+    setsearchValue('');
+  });
   const [referenceElement, setReferenceElement] =
     useState<HTMLDivElement | null>(null);
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
@@ -40,7 +45,7 @@ const ClientHeader = (props: Props) => {
   }, [debouncedSearchTerm]);
 
   return (
-    <>
+    <div ref={ref}>
       <button
         onClick={() => setisActive((prev) => !prev)}
         className="block md:hidden bg-white rounded-full backdrop-filter backdrop-blur-sm bg-opacity-50 p-1"
@@ -77,7 +82,15 @@ const ClientHeader = (props: Props) => {
             >
               {foundPlaces.map((place, index) => (
                 <li key={place.id}>
-                  <button>
+                  <button
+                    onClick={() => {
+                      setZoom(16);
+                      setCenter({
+                        lat: place.latitude,
+                        lng: place.longitude,
+                      });
+                    }}
+                  >
                     <Card.Place place={place} />
                   </button>
                   {index !== foundPlaces.length - 1 && (
@@ -89,7 +102,7 @@ const ClientHeader = (props: Props) => {
           </div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 };
 

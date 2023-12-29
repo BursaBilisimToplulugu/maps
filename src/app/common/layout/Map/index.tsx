@@ -3,21 +3,17 @@ import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import classNames from 'classnames';
 import { memo, useEffect, useState } from 'react';
 import { MdOutlineMyLocation } from 'react-icons/md';
+import { useMap } from '../../hooks/useMap';
 import { Place } from './types/Place';
-import { smoothZoom } from './utils/smoothZoom';
 
 type Props = {
   places: Place[];
 };
 
 const Map = ({ places }: Props) => {
+  const { center, setCenter, zoom, setZoom } = useMap();
   const [map, setMap] = useState<google.maps.Map | null>(null);
   const [location, setLocation] = useState<GeolocationCoordinates | null>(null);
-  const [center, setCenter] = useState<{ lat: number; lng: number }>({
-    lat: 40.1885,
-    lng: 29.061,
-  });
-  const [zoom, setzoom] = useState(12);
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
@@ -52,7 +48,6 @@ const Map = ({ places }: Props) => {
       lat: location?.latitude || 40.222568,
       lng: location?.longitude || 28.820867,
     });
-    smoothZoom(zoom, 16, setzoom);
   };
   return isLoaded ? (
     <GoogleMap
@@ -65,7 +60,7 @@ const Map = ({ places }: Props) => {
       onZoomChanged={() => {
         const zoom = map?.getZoom();
         if (map && zoom) {
-          setzoom(zoom);
+          setZoom(zoom);
         }
       }}
       options={{

@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from 'react';
 export const smoothZoom = (
   from: number,
   to: number,
-  setZoom: Dispatch<SetStateAction<number>>
+  setZoom: Dispatch<SetStateAction<number>> | ((value: number) => void)
 ) => {
   if (from === to) return;
   let current = from;
