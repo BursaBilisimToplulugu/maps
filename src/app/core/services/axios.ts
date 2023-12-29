@@ -43,7 +43,7 @@ instance.interceptors.request.use(async (config) => {
             refresh_token,
           },
         }).then((res) => res.json());
-        // console.log({ response });
+        console.log({ response });
         console.log('got refreshed token');
         token = response.data.access_token;
         setCookie('token', response.data.access_token, {
