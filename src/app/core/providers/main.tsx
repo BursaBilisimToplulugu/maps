@@ -6,7 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LocationProvider from './Location.provider';
 
-type Props = { token?: string; session?: User } & PropsWithChildren;
+type Props = { token?: string; session?: User | null } & PropsWithChildren;
 
 const Providers = ({ children, token, session }: Props) => {
   return (

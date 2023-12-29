@@ -1,4 +1,5 @@
 'use server';
+import { User } from '@/app/(routes)/dashboard/profile/types/user';
 import { instance } from '@/app/core/services/axios';
 import { jwtDecode, JwtPayload } from 'jwt-decode';
 import { cookies } from 'next/headers';
@@ -12,7 +13,9 @@ export const getSession = async () => {
   const token = cookiesStore.get('token')?.value;
   if (token) {
     const decodedToken = jwtDecode(token) as JwtProps;
-    const { data: userData } = await instance.get(`/users/${decodedToken.id}`);
+    const { data: userData } = await instance.get<User>(
+      `/users/${decodedToken.id}`
+    );
     return {
       user: userData,
       token,

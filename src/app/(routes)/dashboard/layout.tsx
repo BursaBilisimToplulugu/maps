@@ -1,7 +1,8 @@
 import Divider from '@/app/common/components/Divider';
+import { getSession } from '@/app/common/utils/getSession';
 import Link from 'next/link';
 import { PropsWithChildren } from 'react';
-import { LuMap, LuUser } from 'react-icons/lu';
+import { LuMap, LuSettings, LuUser } from 'react-icons/lu';
 import Logo from './profile/components/Logo';
 import MenuButton from './profile/components/MenuButton';
 
@@ -19,6 +20,7 @@ export interface CustomSession {
 }
 
 const DashboardLayout = async ({ children }: Props) => {
+  const { user } = await getSession();
   return (
     <div className="flex items-stretch">
       <aside className="hidden md:flex md:w-[300px] bg-neutrals-navyWhite flex-col">
@@ -33,13 +35,13 @@ const DashboardLayout = async ({ children }: Props) => {
             title="Profil"
             icon={<LuUser size={24} />}
           />
-          {/* {session && session.user?.['role'] === 'admin' && (
+          {user && user.role === 'admin' && (
             <MenuButton
               url="/dashboard/admin"
               title="Admin"
               icon={<LuSettings size={24} />}
             />
-          )} */}
+          )}
         </ul>
       </aside>
       <main className="flex-1 bg-white min-h-screen overflow-y-scroll shadow-inner px-4 py-8">

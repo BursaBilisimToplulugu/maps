@@ -2,7 +2,7 @@
 import { User } from '@/app/(routes)/dashboard/profile/types/user';
 import React, { PropsWithChildren, useEffect, useState } from 'react';
 
-type Props = { token?: string; session?: User } & PropsWithChildren;
+type Props = { token?: string; session?: User | null } & PropsWithChildren;
 
 export const AuthContext = React.createContext<{
   authenticated: boolean;

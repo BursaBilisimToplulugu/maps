@@ -12,9 +12,7 @@ import { usePopper } from 'react-popper';
 import Hamburger from '../../Navbar/sub-components/Hamburger';
 import { searchAction } from '../actions/search.action';
 
-type Props = {};
-
-const ClientHeader = (props: Props) => {
+const ClientHeader = () => {
   const { setZoom, setCenter } = useMap();
   const [searchValue, setsearchValue] = useState<string>('');
   const [isActive, setisActive] = useState(false);
