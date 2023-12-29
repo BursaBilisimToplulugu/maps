@@ -12,6 +12,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@formkit/auto-animate": "^0.8.1",
     "@popperjs/core": "^2.11.8",
     "@react-google-maps/api": "^2.19.2",
     "@types/node": "20.4.5",

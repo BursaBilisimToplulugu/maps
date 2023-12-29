@@ -3,6 +3,7 @@ import { Place } from '@/app/(routes)/dashboard/profile/types/user';
 import Card from '@/app/common/components/Card';
 import Divider from '@/app/common/components/Divider';
 import Input from '@/app/common/components/Input';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { useDebounce } from '@uidotdev/usehooks';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
@@ -26,6 +27,7 @@ const ClientHeader = (props: Props) => {
     placement: 'bottom-start',
   });
   const debouncedSearchTerm = useDebounce(searchValue, 300);
+  const [parent] = useAutoAnimate();
 
   useEffect(() => {
     const handleSearch = async () => {
@@ -65,6 +67,7 @@ const ClientHeader = (props: Props) => {
             {...attributes.popper}
           >
             <motion.ul
+              ref={parent}
               initial={{ opacity: 0, marginTop: 10 }}
               animate={{ opacity: 1, marginTop: 0 }}
               exit={{ opacity: 0, marginTop: 10 }}
