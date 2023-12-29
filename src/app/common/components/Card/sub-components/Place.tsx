@@ -16,7 +16,7 @@ const Place = ({ place }: PlaceCardProps) => {
         <FaPlaceOfWorship size={144} color="black" />
       )} */}
       <Image
-        className="w-auto h-auto"
+        className="w-auto h-32 md:h-auto object-cover"
         src={'https://placehold.co/600x400.png'}
         width={400}
         height={300}
@@ -36,7 +36,7 @@ const Place = ({ place }: PlaceCardProps) => {
             <div className="py-0.5">
               <RiRouteFill size={16} className="fill-neutrals-gray" />
             </div>
-            <p className="text-neutrals-navyGrey text-xs break-words">
+            <p className="text-neutrals-navyGrey text-xs break-words text-left">
               {/* {place.open_address} */}
               NİLTİM Üçevler Mah. Ersan Sokak. 8A Kat:1A İbrahim Yazıcı Plaza 2,
               16120 Nilüfer/Bursa
@@ -44,7 +44,7 @@ const Place = ({ place }: PlaceCardProps) => {
           </div>
         </div>
 
-        <div className="border-t border-t-neutrals-navyWhite pt-4 text-xs text-left">
+        <div className="border-t border-t-neutrals-navyWhite pt-4 text-xs text-left mt-4 md:mt-0">
           <span className="text-primary-green font-semibold">Açık</span>
           <span className="text-neutrals-navyGrey ml-2 font-[500]">
             Kapanış Saati: -

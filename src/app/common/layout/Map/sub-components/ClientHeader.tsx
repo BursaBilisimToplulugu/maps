@@ -63,7 +63,7 @@ const ClientHeader = (props: Props) => {
       <AnimatePresence>
         {foundPlaces && foundPlaces.length && (
           <div
-            className="w-full"
+            className="p-4 md:p-0"
             ref={setPopperElement}
             style={styles.popper}
             {...attributes.popper}
@@ -73,7 +73,7 @@ const ClientHeader = (props: Props) => {
               initial={{ opacity: 0, marginTop: 10 }}
               animate={{ opacity: 1, marginTop: 0 }}
               exit={{ opacity: 0, marginTop: 10 }}
-              className="bg-white text-black p-4 rounded-2xl md:max-w-[70%] md:ml-2"
+              className="bg-white shadow-lg text-black p-4 rounded-2xl md:max-w-[80%] md:ml-2 max-h-[70vh] overflow-y-scroll scrollbar-hide"
             >
               {foundPlaces.map((place, index) => (
                 <li key={place.id}>
